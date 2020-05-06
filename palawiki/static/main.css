@@ -93,7 +93,6 @@ h6 {
 }
 
 .account-img {
-    height: 150px;
     width: 150px;
     margin-bottom: 15px;
 }
@@ -186,7 +185,8 @@ input.invalid {
         width: 85%;
         height: 41px;
     }
-    .bloque {
-        display: block !important;
+    .borders {
+        margin-top: 1.5rem !important;
+        margin-left: 1rem !important;
     }
 }
