@@ -173,7 +173,7 @@ input.invalid {
     background-color: #007bff;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 560px) {
     .small_pic {
         float: none !important;
         width: 100% !important;
