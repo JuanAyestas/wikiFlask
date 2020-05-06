@@ -1,1 +1,1 @@
-web: gunicorn wsgi:palawiki
+web: gunicorn wsgi:app
