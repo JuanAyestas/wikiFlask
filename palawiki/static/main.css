@@ -1,0 +1,182 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #444444;
+}
+
+.bg-steel {
+    background-color: #5f788a;
+}
+
+.site-header .navbar-nav .nav-link {
+    color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+    font-weight: 500;
+}
+
+.content-section {
+    background: #ffffff;
+    padding: 20px 15px 15px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.article-title {
+    color: #444444;
+}
+
+.article-title:hover {
+    color: #428bca;
+}
+
+.article-content {
+    white-space: pre-line;
+}
+
+.img-cont {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.article-img {
+    width: 100%;
+}
+
+.article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #e3e3e3
+}
+
+.article-data {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-top: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-metadata h5:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-metadata p:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.account-img {
+    height: 150px;
+    width: 150px;
+    margin-bottom: 15px;
+}
+
+.account-heading {
+    font-size: 2.5rem;
+}
+
+.inner {
+    overflow: hidden;
+}
+
+.inner img {
+    transition: all 1s ease;
+}
+
+.inner:hover img {
+    transform: scale(1.25);
+}
+
+.float-middle {
+    display: inline-block;
+}
+
+#regForm {
+    background-color: #ffffff;
+    margin: auto;
+    padding: 20px;
+}
+
+
+/* Style the input fields */
+
+
+/* Mark input boxes that gets an error on validation: */
+
+input.invalid {
+    background-color: #ffdddd;
+}
+
+
+/* Hide all steps by default: */
+
+.tab {
+    display: none;
+}
+
+
+/* Make circles that indicate the steps of the form: */
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+
+/* Mark the active step: */
+
+.step.active {
+    opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+
+.step.finish {
+    background-color: #007bff;
+}
+
+@media screen and (max-width: 600px) {
+    .small_pic {
+        float: none !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+    .centrado {
+        text-align: center !important;
+    }
+    .boton {}
+}

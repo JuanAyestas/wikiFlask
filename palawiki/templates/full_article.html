@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+<!-- extended from -->
+{% block body %}
+<!-- block start -->
+<div>
+    <a class="btn btn-secondary btn-sm m-1" href="{{url_for('main.championslist')}}">&#8592; Back to Champions</a>
+</div>
+
+<div class="text-center">
+    <h1 style="display:inline-block;"></h1>
+</div>
+<!-- for starts -->
+<article class="media content-section p-3">
+    <div class="img-cont">
+        <img class="rounded-circle float-left article-img" src="{{ post.author.image_file }}" alt="post.author.username">
+    </div>
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <!-- start if -->
+        {% if post.author == current_user %}
+        <div class="centrado article-metadata">
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{url_for('champions.edit', champion_id=post.id)}}">Update</a>
+            <button class="btn btn-danger btn-sm m-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{url_for('champions.change_portait', champion_id=post.id)}}">Change Portait</a>
+
+        </div>
+
+        <!-- endif -->
+        {% endif %}
+
+        <div class="centrado">
+            <h2><a class="article-title" href="{{url_for('main.championslist')}}">{{ post.name }}</a></h2>
+        </div>
+        <div>
+            <img class="w-50 float-right img-thumbnail small_pic shadow" src="{{post.portait}}" alt="{{post.name}}">
+        </div>
+        <div class="article-metadata centrado">
+            <h5><a class="article-title text-muted" href="{{url_for('main.championslist')}}"><em>{{ post.title }}</em></a></h5>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">Role:</h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.role }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">HP Stats: </h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.hp }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">Movement Speed: </h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.speed }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">Summary: </h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.summary }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">Story and Lore: </h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.content }}</p>
+                </li>
+            </ul>
+        </div>
+        <div class="article-metadata">
+            <h4 class="article-content">Abilities: </h4>
+            <ul>
+                <li>
+                    <p class="article-content lead">{{ post.skill_1 }}</p>
+                </li>
+                <li>
+                    <p class="article-content lead">{{ post.skill_2 }}</p>
+                </li>
+                <li>
+                    <p class="article-content lead">{{ post.skill_3 }}</p>
+                </li>
+                <li>
+                    <p class="article-content lead">{{ post.skill_4 }}</p>
+                </li>
+                <li>
+                    <p class="article-content lead">{{ post.skill_5 }}</p>
+                </li>
+            </ul>
+        </div>
+        </>
+    </div>
+</article>
+<!-- start modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Entry?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="lead">This can't be unmade, are you sure you wanna proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="{{url_for('champions.delete', champion_id=post.id)}}" method="POST">
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end block -->
+{% endblock body %}

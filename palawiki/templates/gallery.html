@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+<!-- extended from -->
+{% block body %}
+
+<div>
+    <a style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px;" class="btn btn-secondary btn-sm" href="{{url_for('main.home')}}">&#8592; Back to home</a>
+    <a style="margin-left: 5px; margin-top: 10px; margin-bottom: 10px;" class=" btn btn-success float-sm-right btn-sm" href="{{url_for('main.championslist')}}">Go to champions &#8594;</a>
+</div>
+<div class="text-center">
+    <h1 style="display:inline-block;">Champions Gallery:</h1>
+</div>
+<div class="row row-cols-2">
+    {% for pic in pics %}
+    <div class="col-md-6 shadow inner">
+        <figure class="figure">
+            <div class="text-center">
+                <br/>
+                <figcaption class="figure-caption">{{pic.champion_name}}</figcaption>
+                <hr/>
+            </div>
+            <img src="{{pic.img_file}}" class="figure-img img-fluid rounded w-100" alt="{{pic.champion_name}}">
+            <!-- if  -->
+            {% if current_user.is_authenticated %}
+            <hr/>
+            <div>
+                <a class="btn btn-secondary btn-sm m-1" href="{{url_for('champions.full_picture', picture_id=pic.id)}}">Open in new tab</a>
+            </div>
+            <!-- endif -->
+            {% endif %}
+        </figure>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- end -->
+{% endblock%}

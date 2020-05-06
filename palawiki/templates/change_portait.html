@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!-- extended from -->
+{% block body %}
+<h2 class="text-center">Current Portait</h2>
+<div>
+    <img class="w-100 h-100 img-thumbnail shadow" src="{{post.portait}}" alt="{{post.name}}">
+</div>
+<div class="content-section">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{legend}}</legend>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.portait.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.portait.errors %}
+                <!-- start if -->
+                {{ form.portait(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.portait.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                {{ form.portait(class="form-control form-control-lg") }}
+                <!-- endif -->
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-info") }}
+        </div>
+    </form>
+</div>
+{% endblock body %}

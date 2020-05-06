@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+<!-- extended from -->
+{% block body %}
+<div class="content-section">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Willing to help? Join us!</legend>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.username.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.username.errors %}
+                <!-- start if -->
+                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                {{ form.username(class="form-control form-control-lg") }}
+                <!-- endif -->
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.email.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.email.errors %}
+                <!-- start if -->
+                {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                {{ form.email(class="form-control form-control-lg") }}
+                <!-- endif -->
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.password.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.password.errors %}
+                <!-- start if -->
+                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                {{ form.password(class="form-control form-control-lg") }}
+                <!-- endif -->
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.confirm_password.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.confirm_password.errors %}
+                <!-- start if -->
+                {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                {{ form.confirm_password(class="form-control form-control-lg") }}
+                <!-- endif -->
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-info") }}
+        </div>
+    </form>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+    Already registered? Follow the next link:
+    <a class="ml-2" href="{{ url_for('users.login') }}">Sign in</a>
+  </small>
+</div>
+{% endblock body %}

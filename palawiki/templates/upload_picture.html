@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+<!-- extended from -->
+{% block body %}
+<div>
+    <a style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px;" class="btn btn-secondary btn-sm" href="{{url_for('main.gallery')}}">&#8592; Back to gallery</a>
+</div>
+
+<h2 class="text-center">Upload Picture</h2>
+
+<div class="content-section">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{legend}}</legend>
+            <div class="form-group">
+                <!-- label -->
+                {{ form.champion_id.label(class="form-control-label") }}
+                <!-- start error if -->
+                {% if form.champion_id.errors %}
+                <!-- start if -->
+                {{ form.champion_id(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.champion_id.errors %}
+                    <!-- start for -->
+                    <span>{{ error }}</span>
+                    <!-- endif -->
+                    {% endfor %}
+                </div>
+                {% else %}
+                <!-- start else -->
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select class="custom-select" id="champion_id" name="champion_id">
+                            <option selected>Choose...</option>
+                            <!-- start for -->
+                            {% for post in posts %}
+                            <option value="{{post.id}}">{{post.name}} - {{post.title}}</option>
+                            {% endfor %}
+                            <!-- endfor -->
+                        </select>
+                    </div>
+                </div>
+                <!-- endif -->
+                {% endif %}
+                <br/>
+                <div class="form-group">
+                    <!-- label -->
+                    {{ form.champion_name.label(class="form-control-label") }}
+                    <!-- start error if -->
+                    {% if form.champion_name.errors %}
+                    <!-- start if -->
+                    {{ form.champion_name(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.champion_name.errors %}
+                        <!-- start for -->
+                        <span>{{ error }}</span>
+                        <!-- endif -->
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <!-- start else -->
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" id="champion_name" name="champion_name">
+                            <option selected>Choose...</option>
+                            <!-- start for -->
+                            {% for post in posts %}
+                            <option value="{{post.name}}">{{post.title}}</option>
+                            {% endfor %}
+                            <!-- endfor -->
+                        </select>
+                        </div>
+                    </div>
+                    <!-- endif -->
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <!-- label -->
+                    {{ form.img_file.label(class="form-control-label") }}
+                    <!-- start error if -->
+                    {% if form.img_file.errors %}
+                    <!-- start if -->
+                    {{ form.img_file(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.img_file.errors %}
+                        <!-- start for -->
+                        <span>{{ error }}</span>
+                        <!-- endif -->
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <!-- start else -->
+                    {{ form.img_file(class="form-control form-control-lg") }}
+                    <!-- endif -->
+                    {% endif %}
+                </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-info") }}
+        </div>
+    </form>
+    </div>
+    <h2 class="text-center">This are the ones we've so far</h2>
+    <hr>
+    <div class="row row-cols-2">
+        {% for pic in pics %}
+        <div class="col-md-4 shadow inner">
+            <figure class="figure">
+                <div>
+                    <figcaption class="figure-caption text-center">{{pic.champion_name}}</figcaption>
+                </div>
+                <img src="{{pic.img_file}}" class="figure-img img-fluid rounded w-100" alt="{{pic.champion_name}}">
+            </figure>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
