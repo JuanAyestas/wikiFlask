@@ -13,58 +13,58 @@
 <br>
 <!-- for starts -->
 {% for post in posts.items %}
-<article class="media content-section">
-    <div class="img-cont">
-        <img class="rounded-circle float-left article-img" src="{{ post.author.image_file }}" alt="post.author.username">
+<article class="media content-section pl-1 pr-3 pt-3 pb-3" ">
+    <div class="img-cont ">
+        <img class="rounded-circle float-left article-img " src="{{ post.author.image_file }} " alt="post.author.username ">
     </div>
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+    <div class="media-body ">
+        <div class="article-metadata ">
+            <a class="mr-2 " href="{{ url_for( 'users.user_posts', username=post.author.username) }} ">{{ post.author.username }}</a>
+            <small class="text-muted ">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
         </div>
-        <div class="centrado">
-            <h2><a class="article-title" href="{{ url_for('main.full_article', champion_id=post.id) }}">{{ post.name }}</a></h2>
+        <div class="centrado ">
+            <h2><a class="article-title " href="{{ url_for( 'main.full_article', champion_id=post.id) }} ">{{ post.name }}</a></h2>
         </div>
         <div>
-            <img class="w-50 float-right img-thumbnail small_pic shadow" src="{{post.portait}}" alt="{{post.name}}">
+            <img class="w-50 float-right img-thumbnail small_pic shadow " src="{{post.portait}} " alt="{{post.name}} ">
         </div>
-        <div class="article-metadata centrado">
-            <h5><a class="article-title text-muted" href="{{url_for('main.full_article', champion_id=post.id)}}"><em>{{ post.title }}</em></a></h5>
+        <div class="article-metadata centrado ">
+            <h5><a class="article-title text-muted " href="{{url_for( 'main.full_article', champion_id=post.id)}} "><em>{{ post.title }}</em></a></h5>
         </div>
-        <div class="article-metadata">
-            <h5 class="article-content">Role:</h5>
+        <div class="article-metadata ">
+            <h5 class="article-content ">Role:</h5>
             <ul>
                 <li>
-                    <p class="article-content lead">{{ post.role }}</p>
+                    <p class="article-content lead ">{{ post.role }}</p>
                 </li>
             </ul>
         </div>
-        <div class="article-metadata">
-            <h5 class="article-content">Summary: </h5>
+        <div class="article-metadata ">
+            <h5 class="article-content ">Summary: </h5>
             <ul>
                 <li>
-                    <p class="article-content lead">{{ post.summary }}</p>
+                    <p class="article-content lead ">{{ post.summary }}</p>
                 </li>
             </ul>
         </div>
-        <div class="article-metadata">
-            <small class="text-muted">To check the full article, click the Champion's name</small>
+        <div class="article-metadata ">
+            <small class="text-muted ">To check the full article, click the Champion's name</small>
         </div>
     </div>
 </article>
 <!-- endfor /champions/{{ post.id }}-->
 {% endfor %}
 <!-- for starts -->
-<div class="text-center">
+<div class="text-center ">
     {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
     <!-- for -->
     {% if page_num %}
     <!-- 2nd for -->
     {% if posts.page == page_num %}
-    <a class="btn btn-secondary mb-4" href="{{url_for('main.championslist', page=page_num)}}">{{page_num}}</a>
+    <a class="btn btn-secondary mb-4 " href="{{url_for( 'main.championslist', page=page_num)}} ">{{page_num}}</a>
     <!-- else -->
     {% else %}
-    <a class="btn btn-outline-secondary mb-4" href="{{url_for('main.championslist', page=page_num)}}">{{page_num}}</a>
+    <a class="btn btn-outline-secondary mb-4 " href="{{url_for( 'main.championslist', page=page_num)}} ">{{page_num}}</a>
     <!-- endif -->
     {% endif %}
     <!-- else -->

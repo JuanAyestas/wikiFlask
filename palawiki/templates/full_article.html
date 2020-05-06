@@ -10,9 +10,9 @@
     <h1 style="display:inline-block;"></h1>
 </div>
 <!-- for starts -->
-<article class="media content-section p-3">
+<article class="media content-section pl-1 pr-3 pt-3 pb-3">
     <div class="img-cont">
-        <img class="rounded-circle float-left article-img" src="{{ post.author.image_file }}" alt="post.author.username">
+        <img class="rounded-circle float-left article-img pic_hide" src="{{ post.author.image_file }}" alt="post.author.username">
     </div>
     <div class="media-body">
         <div class="article-metadata">
@@ -23,8 +23,8 @@
         {% if post.author == current_user %}
         <div class="article-metadata">
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{url_for('champions.edit', champion_id=post.id)}}">Update</a>
-            <button class="btn btn-danger btn-sm m-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
             <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{url_for('champions.change_portait', champion_id=post.id)}}">Change Portait</a>
+            <button class="btn btn-danger btn-sm m-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
 
         </div>
 

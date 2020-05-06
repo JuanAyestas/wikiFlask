@@ -178,5 +178,15 @@ input.invalid {
     .centrado {
         text-align: center !important;
     }
-    .boton {}
+    .media-body {
+        flex: auto !important;
+    }
+    .img-cont {
+        margin-right: 5px;
+        width: 85%;
+        height: 41px;
+    }
+    .bloque {
+        display: block !important;
+    }
 }
