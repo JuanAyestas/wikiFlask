@@ -15,6 +15,7 @@ flask-bcrypt = "*"
 flask-login = "*"
 pillow = "*"
 flask-mail = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
