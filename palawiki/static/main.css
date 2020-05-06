@@ -193,7 +193,10 @@ input.invalid {
         height: 100%;
     }
     .borders {
-        margin-top: 1.5rem !important;
-        margin-left: 1rem !important;
+        margin-top: 2rem !important;
+        margin-left: 1.5rem !important;
+    }
+    h2 {
+        font-size: 1.75rem !important;
     }
 }
