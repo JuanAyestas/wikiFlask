@@ -113,6 +113,11 @@ h6 {
     transform: scale(1.25);
 }
 
+.borders {
+    margin-top: 3rem;
+    margin-left: 3rem;
+}
+
 .float-middle {
     display: inline-block;
 }
@@ -183,6 +188,9 @@ input.invalid {
     .img-cont {
         margin-right: 5px;
         width: 85%;
+    }
+    .account-img {
+        height: 100%;
     }
     .borders {
         margin-top: 1.5rem !important;
