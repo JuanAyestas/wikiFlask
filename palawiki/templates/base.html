@@ -7,7 +7,8 @@
     <link rel="shortcut icon" type="image/jpg" href="https://i.pinimg.com/originals/2d/5c/fe/2d5cfe6047b83adfd79f9f7f999d8340.jpg" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-    <link rel="stylesheet" href="{{url_for('static', filename='/icomoon/style.css')}}">
+    <!-- <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='/fontawesome/css/all.css')}}">
     <!-- bootstrap -->
     {% if title %}
     <title>Champions Wiki - {{title}}</title>
@@ -16,7 +17,7 @@
     {% endif %}
 </head>
 
-<body class="">
+<body>
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -27,13 +28,20 @@
                 <div class="collapse navbar-collapse" id="navbarsExample03">
                     <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{{url_for('main.championslist')}}">Champions</a>
-                        <a class="nav-item nav-link" href="{{url_for('main.gallery')}}">Gallery</a>
-                        <a class="nav-item nav-link icon-moon1" onclick="theme_switch()"><span id="theme_readout"></span></a>
+                        <a class="nav-item nav-link mr-2" href="{{url_for('main.gallery')}}">Gallery</a>
+                        <div class="label_div" id="theme-change">
+                            <input type="checkbox" class="checkbox" id="checkbox-theme">
+                            <label for="checkbox-theme" class="label_check theme-change">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                                <span class="ball"></span>
+                            </label>
+                        </div>
                     </div>
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{{url_for('champions.upload_picture')}}"> + New picture</a>
-                        <a class="nav-item nav-link" href="{{url_for('champions.newpost')}}"> + New entry</a>
+                        <a class="nav-item nav-link" href="{{url_for('champions.upload_picture')}}">New picture</a>
+                        <a class="nav-item nav-link" href="{{url_for('champions.newpost')}}">New entry</a>
                         <a class="nav-item nav-link" href="{{url_for('users.account')}}">Account</a>
                         <a class="nav-item nav-link" href="{{url_for('users.logout')}}">Logout</a>
                         <!-- start else -->
@@ -72,54 +80,55 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
     <script>
-        var theme = 'light';
-        if (localStorage.getItem('theme')) {
-            if (localStorage.getItem('theme') === 'dark') {
-                theme = 'dark';
+        //determines if the user has a set theme
+        function detectColorScheme() {
+            var theme = "light"; //default to light
+
+            //local storage is used to override OS theme settings
+            if (localStorage.getItem("theme")) {
+                if (localStorage.getItem("theme") == "dark") {
+                    var theme = "dark";
+                }
+            } else if (!window.matchMedia) {
+                //matchMedia method not supported
+                return false;
+            } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                //OS theme setting detected as dark
+                var theme = "dark";
             }
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            theme = 'dark';
+
+            //dark theme preferred, set document with a `data-theme` attribute
+            if (theme == "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            }
         }
+        detectColorScheme();
+
+        //identify the toggle switch HTML element
+        const toggleSwitch = document.querySelector('#theme-change input[type="checkbox"]');
+
         //function that changes the theme, and sets a localStorage variable to track the theme between page loads
-        var theme;
-
-        function theme_apply() {
-            'use strict';
-            if (theme === 'light') {
-                document.getElementById('theme_readout').innerHTML = 'Dark';
-                document.documentElement.setAttribute('data-theme', 'light');
-                localStorage.setItem('theme', 'light');
-
-            } else {
-                document.getElementById('theme_readout').innerHTML = 'Light';
-                document.documentElement.setAttribute('data-theme', 'dark');
+        function switchTheme(e) {
+            if (e.target.checked) {
                 localStorage.setItem('theme', 'dark');
-
+                document.documentElement.setAttribute('data-theme', 'dark');
+                toggleSwitch.checked = true;
+            } else {
+                localStorage.setItem('theme', 'light');
+                document.documentElement.setAttribute('data-theme', 'light');
+                toggleSwitch.checked = false;
             }
         }
-        theme_apply();
 
-        function theme_switch() {
-            'use strict';
-            if (theme === 'light') {
-                theme = 'dark';
+        //listener for changing themes
+        toggleSwitch.addEventListener('change', switchTheme, false);
 
-            } else {
-                theme = 'light';
-            }
-            theme_apply();
+        //pre-check the dark-theme checkbox if dark-theme is set
+        if (document.documentElement.getAttribute("data-theme") == "dark") {
+            toggleSwitch.checked = true;
         }
-        var theme_OS = window.matchMedia('(prefers-color-scheme: light)');
-        theme_OS.addEventListener('change', function(e) {
-            'use strict';
-            if (e.matches) {
-                theme = 'light';
-            } else {
-                theme = 'dark';
-            }
-            theme_apply();
-        });
     </script>
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)

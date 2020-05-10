@@ -10,20 +10,37 @@
     --hover: rgb(0, 128, 200);
     --form: rgb(250, 250, 250);
     --black: rgb(0, 0, 0);
+    transition: background 0.2s linear;
 }
 
 [data-theme="dark"] {
-    --font-color: rgb(240, 240, 240);
+    --font-color: white;
     --link-color: #0a86da;
     --link-white-color: white;
     --bg-color: #212121;
     --jumbo: #414141;
     --gray: #414141;
     --borgray: #414141;
-    --muted: rgb(170, 170, 170);
+    --muted: rgb(200, 200, 200);
     --hover: rgb(0, 128, 200);
-    --form: rgb(240, 240, 240);
+    --form: rgb(245, 245, 245);
     --black: rgb(0, 0, 0);
+    transition: background 0.2s linear;
+}
+
+.dark_mode {
+    --font-color: white;
+    --link-color: #0a86da;
+    --link-white-color: white;
+    --bg-color: #212121;
+    --jumbo: #414141;
+    --gray: #414141;
+    --borgray: #414141;
+    --muted: rgb(200, 200, 200);
+    --hover: rgb(0, 128, 200);
+    --form: rgb(245, 245, 245);
+    --black: rgb(0, 0, 0);
+    transition: background 0.2s linear;
 }
 
 span {
@@ -173,6 +190,56 @@ body {
     margin-left: 3rem;
 }
 
+.checkbox,
+.checkbox2 {
+    opacity: 0;
+    position: absolute;
+}
+
+.label_check {
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    border-radius: 50px;
+    border-bottom: 0;
+    height: 26px;
+    width: 50px;
+    padding: 5px;
+    transform: scale(1.5);
+}
+
+.label_div {
+    margin-left: 13px;
+    margin-right: 10px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.ball {
+    background-color: white;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    height: 22px;
+    width: 22px;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked+.label_check .ball {
+    transform: translateX(24px);
+}
+
 .float-middle {
     display: inline-block;
 }
@@ -267,5 +334,9 @@ input.invalid {
         font-size: .875rem !important;
         line-height: 1.5 !important;
         border-radius: .2rem !important;
+    }
+    .label_div {
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
 }
