@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html class="" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/jpg" href="https://i.pinimg.com/originals/2d/5c/fe/2d5cfe6047b83adfd79f9f7f999d8340.jpg" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='/icomoon/style.css')}}">
     <!-- bootstrap -->
     {% if title %}
     <title>Champions Wiki - {{title}}</title>
@@ -14,7 +16,7 @@
     {% endif %}
 </head>
 
-<body>
+<body class="">
     <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container">
@@ -26,6 +28,7 @@
                     <div class="navbar-nav mr-auto">
                         <a class="nav-item nav-link" href="{{url_for('main.championslist')}}">Champions</a>
                         <a class="nav-item nav-link" href="{{url_for('main.gallery')}}">Gallery</a>
+                        <a class="nav-item nav-link icon-moon1" onclick="theme_switch()"><span id="theme_readout"></span></a>
                     </div>
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
@@ -69,6 +72,55 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        var theme = 'light';
+        if (localStorage.getItem('theme')) {
+            if (localStorage.getItem('theme') === 'dark') {
+                theme = 'dark';
+            }
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            theme = 'dark';
+        }
+        //function that changes the theme, and sets a localStorage variable to track the theme between page loads
+        var theme;
+
+        function theme_apply() {
+            'use strict';
+            if (theme === 'light') {
+                document.getElementById('theme_readout').innerHTML = 'Dark';
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+
+            } else {
+                document.getElementById('theme_readout').innerHTML = 'Light';
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+
+            }
+        }
+        theme_apply();
+
+        function theme_switch() {
+            'use strict';
+            if (theme === 'light') {
+                theme = 'dark';
+
+            } else {
+                theme = 'light';
+            }
+            theme_apply();
+        }
+        var theme_OS = window.matchMedia('(prefers-color-scheme: light)');
+        theme_OS.addEventListener('change', function(e) {
+            'use strict';
+            if (e.matches) {
+                theme = 'light';
+            } else {
+                theme = 'dark';
+            }
+            theme_apply();
+        });
+    </script>
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab

@@ -1,20 +1,49 @@
+:root {
+    --font-color: #333333;
+    --link-color: #1C75B9;
+    --link-white-color: #fff;
+    --bg-color: #fafafa;
+    --jumbo: rgb(233, 236, 239);
+    --gray: #fafafa;
+    --borgray: #dddddd;
+    --muted: #6c757d;
+    --hover: rgb(0, 128, 200);
+    --form: rgb(250, 250, 250);
+    --black: rgb(0, 0, 0);
+}
+
+[data-theme="dark"] {
+    --font-color: rgb(240, 240, 240);
+    --link-color: #0a86da;
+    --link-white-color: white;
+    --bg-color: #212121;
+    --jumbo: #414141;
+    --gray: #414141;
+    --borgray: #414141;
+    --muted: rgb(170, 170, 170);
+    --hover: rgb(0, 128, 200);
+    --form: rgb(240, 240, 240);
+    --black: rgb(0, 0, 0);
+}
+
+span {
+    font-family: sans-serif !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
 body {
-    background: #fafafa;
     color: #333333;
+    color: var(--font-color) !important;
+    background: #fafafa;
+    background: var(--bg-color) !important;
     margin-top: 5rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #444444;
-}
-
 .bg-steel {
-    background-color: #5f788a;
+    background: #5f788a;
+    background: var();
 }
 
 .site-header .navbar-nav .nav-link {
@@ -29,20 +58,34 @@ h6 {
     font-weight: 500;
 }
 
+.jumbotron {
+    background-color: var(--jumbo) !important;
+}
+
 .content-section {
     background: #ffffff;
+    color: var(--font-color) !important;
+    background: var(--gray) !important;
     padding: 20px 15px 15px 20px;
     border: 1px solid #dddddd;
+    border: 1px solid var(--borgray) !important;
     border-radius: 10px;
     margin-bottom: 20px;
 }
 
+.figure,
+.cards {
+    background: var(--gray) !important;
+}
+
 .article-title {
+    color: var(--font-color) !important;
     color: #444444;
 }
 
 .article-title:hover {
     color: #428bca;
+    color: var(--hover) !important;
 }
 
 .article-content {
@@ -51,12 +94,16 @@ h6 {
 
 .img-cont {
     width: 50px;
-    height: 50px;
     margin-right: 10px;
 }
 
 .article-img {
     width: 100%;
+}
+
+.img-thumbnail {
+    background-color: var(--gray) !important;
+    border: 1px solid var(--gray) !important;
 }
 
 .article-metadata {
@@ -73,17 +120,25 @@ h6 {
 
 .article-metadata a:hover {
     color: #333;
+    color: var(--font-color) !important;
     text-decoration: none;
 }
 
 .article-metadata h5:hover {
     color: #333;
+    color: var(--font-color) !important;
     text-decoration: none;
 }
 
 .article-metadata p:hover {
     color: #333;
+    color: var(--font-color) !important;
     text-decoration: none;
+}
+
+.text-secondary,
+.text-muted {
+    color: var(--muted) !important;
 }
 
 .article-svg {
@@ -123,9 +178,15 @@ h6 {
 }
 
 #regForm {
-    background-color: #ffffff;
+    background: #ffffff;
+    background: var(--gray) !important;
     margin: auto;
     padding: 20px;
+}
+
+.custom-select,
+.form-control {
+    background-color: var(--form) !important;
 }
 
 
@@ -135,7 +196,7 @@ h6 {
 /* Mark input boxes that gets an error on validation: */
 
 input.invalid {
-    background-color: #ffdddd;
+    background: #ffdddd;
 }
 
 
@@ -152,7 +213,7 @@ input.invalid {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #bbbbbb;
+    background: #bbbbbb;
     border: none;
     border-radius: 50%;
     display: inline-block;
@@ -170,7 +231,7 @@ input.invalid {
 /* Mark the steps that are finished and valid: */
 
 .step.finish {
-    background-color: #007bff;
+    background: #007bff;
 }
 
 @media screen and (max-width: 560px) {
@@ -186,6 +247,8 @@ input.invalid {
         flex: auto !important;
     }
     .img-cont {
+        color: var(--font-color) !important;
+        background: var(--bg-color) !important;
         margin-right: 4px;
         width: 85%;
     }
