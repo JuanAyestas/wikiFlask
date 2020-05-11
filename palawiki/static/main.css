@@ -27,23 +27,8 @@
     --hover: rgb(0, 128, 200);
     --form: rgb(245, 245, 245);
     --black: rgb(0, 0, 0);
-    --modal: #414141;
-    transition: background 0.2s linear;
-}
-
-.dark_mode {
-    --font-color: white;
-    --link-color: #0a86da;
-    --link-white-color: white;
-    --bg-color: #212121;
-    --jumbo: #414141;
-    --gray: #414141;
-    --borgray: #414141;
-    --muted: rgb(200, 200, 200);
-    --hover: rgb(0, 128, 200);
-    --form: rgb(245, 245, 245);
-    --black: rgb(0, 0, 0);
     --white: white;
+    --modal: #414141;
     transition: background 0.2s linear;
 }
 
@@ -123,7 +108,7 @@ body {
 }
 
 .img-cont {
-    width: 50px;
+    width: 40px;
     margin-right: 10px;
 }
 
