@@ -53,6 +53,7 @@
                 </div>
                 <div class="mb-2">
                     {{ form.submit(class="btn btn-info btn-sm", id="submitBtn") }}
+                    <a class="ml-1" href="{{url_for('users.reset_request')}}">Forgot password?</a>
                 </div>
                 <div class="form-check">
                     {{ form.remember(class="form-check-input") }}
