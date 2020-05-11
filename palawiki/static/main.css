@@ -11,6 +11,7 @@
     --form: rgb(250, 250, 250);
     --black: rgb(0, 0, 0);
     --white: white;
+    --modal: white;
     transition: background 0.2s linear;
 }
 
@@ -26,6 +27,7 @@
     --hover: rgb(0, 128, 200);
     --form: rgb(245, 245, 245);
     --black: rgb(0, 0, 0);
+    --modal: #414141;
     transition: background 0.2s linear;
 }
 
@@ -98,12 +100,12 @@ body {
 }
 
 .modal-content {
-    background: var(--gray);
+    background: var(--modal) !important;
     border: 1px solid white !important;
 }
 
 #x_symbol {
-    color: var(--font-color);
+    color: var(--font-color) !important;
 }
 
 .article-title {
