@@ -10,6 +10,7 @@
     --hover: rgb(0, 128, 200);
     --form: rgb(250, 250, 250);
     --black: rgb(0, 0, 0);
+    --white: white;
     transition: background 0.2s linear;
 }
 
@@ -40,6 +41,7 @@
     --hover: rgb(0, 128, 200);
     --form: rgb(245, 245, 245);
     --black: rgb(0, 0, 0);
+    --white: white;
     transition: background 0.2s linear;
 }
 
@@ -93,6 +95,15 @@ body {
 .figure,
 .cards {
     background: var(--gray) !important;
+}
+
+.modal-content {
+    background: var(--gray);
+    border: 1px solid white !important;
+}
+
+#x_symbol {
+    color: var(--font-color);
 }
 
 .article-title {
