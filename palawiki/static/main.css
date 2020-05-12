@@ -13,7 +13,7 @@
     --white: white;
     --modal: white;
     --media_border: #dddddd;
-    transition: background 0.2s linear;
+    --border_2: transition: background 0.2s linear;
 }
 
 [data-theme="dark"] {
@@ -76,7 +76,7 @@ body {
     background: var(--gray) !important;
     padding: 20px 15px 15px 20px;
     border: 1px solid #dddddd;
-    border: 1px solid var(--gray) !important;
+    border: 1px solid var(--borgray) !important;
     border-radius: 10px;
     margin-bottom: 20px;
 }
