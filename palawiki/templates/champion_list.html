@@ -6,7 +6,11 @@
 <div class="d-flex justify-content-between flex_article">
     <a class="btn btn-secondary mr-4 mt-2 mb-2 btn-block block_button " href="{{url_for('main.home')}}"><i class="fas fa-home"></i> Home</a>
     <a class="btn btn-primary m-2 btn-block block_button " href="{{url_for('main.gallery')}}">Gallery <i class="fas fa-images"></i></a>
+    <!-- start if -->
+    {% if current_user.is_authenticated %}
     <a class=" btn btn-success ml-4 mt-2 mb-2 btn-block block_button " href="{{url_for('champions.newpost')}}">New Entry <i class="fas fa-plus-square"></i></a>
+    <!-- endif -->
+    {% endif %}
 </div>
 <div class="text-center mb-4">
     <h1>Champions List:</h1>
