@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 <!-- extended from -->
 {% block body %}
-<div class="jumbotron text-center">
+<div class="jumbotron text-center round">
     <h1 class="display-6">Welcome to my fanmade Wiki!</h1>
     <br/>
     <div class="text-left pl-4 pr-4">
@@ -11,44 +11,54 @@
 </div>
 <hr>
 <div class="container">
-    <div class="card mb-3 shadow cards">
-        <div class="inner">
-            <img class="card-img-top img-fluid" src="https://pbs.twimg.com/media/DNHWvGkW4AEcaMb.jpg" alt="Card image cap">
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Champions list</h5>
-            <p class="card-text"></p>
-            <a href="{{url_for('main.championslist')}}" class="btn btn-primary btn-sm">Check it out</a>
-        </div>
-    </div>
-    <div class="card mb-3 shadow cards">
-        <div class="inner">
+    <div class="card mb-3 shadow cards round">
+        <div class="inner round">
             <img class="card-img-top img-fluid" src="https://wallpapercave.com/wp/wp1912718.jpg" alt="Card image cap">
         </div>
         <div class="card-body">
             <!-- start if -->
             {% if current_user.is_authenticated %}
-            <h5 class="card-title">Help the wiki to grow!</h5>
-            <a href="{{url_for('champions.newpost')}}" class="btn btn-primary btn-sm">Add a new entry</a>
-            <hr/>
-            <h5 class="card-text">Upload a picture for our champions!</h5>
-            <a href="{{url_for('champions.upload_picture')}}" class="btn btn-primary btn-sm">Upload a new picture</a>
+            <h3 class="card-title">Help the wiki to grow!</h3>
+            <p class="card-text">We're stronger together!</p>
+            <div class="d-flex justify-content-between flex_article">
+                <a href="{{url_for('champions.newpost')}}" class="btn btn-primary btn-block mr-4 mt-2 block_button">Add new entry <i class="fas fa-plus-square"></i></a>
+                <a href="{{url_for('champions.upload_picture')}}" class="btn btn-primary btn-block mt-2 ml-4 block_button">Add new Picture <i class="fas fa-camera"></i></a>
+            </div>
             <!-- else -->
             {% else %}
-            <h5 class="card-title">Would like to help the wiki grow?</h5>
-            <a href="{{url_for('users.register')}}" class="btn btn-primary btn-sm">Register now!</a>
+            <h3 class="card-title">Would like to help the wiki grow?</h3>
+            <div class="mb-3">
+                <p class="card-text">We're stronger together!</p>
+            </div>
+            <div class="d-flex justify-content-between flex_article">
+                <a href="{{url_for('users.register')}}" class="btn btn-primary btn-block w-25 block_button">Register now! <i class="fas fa-user-plus"></i></a>
+            </div>
             <!-- endif -->
             {% endif %}
         </div>
     </div>
-    <div class="card mb-3 shadow cards">
-        <div class="inner">
+    <div class="card mb-3 shadow cards round">
+        <div class="inner round">
+            <img class="card-img-top img-fluid" src="https://pbs.twimg.com/media/DNHWvGkW4AEcaMb.jpg" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Champions list</h3>
+            <p class="card-text"></p>
+            <div class="d-flex justify-content-between flex_article">
+                <a href="{{url_for('main.championslist')}}" class="btn btn-primary btn-block w-25 block_button">Check them out <i class="fas fa-list-alt"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="card mb-3 shadow cards round">
+        <div class="inner round">
             <img class="card-img-top img-fluid" src="https://i.pinimg.com/originals/42/df/d6/42dfd6b0477a872a54ae19db8af32177.jpg" alt="Card image cap">
         </div>
         <div class="card-body">
-            <h5 class="card-title">Want to see some art?</h5>
-            <p class="card-text"></p>
-            <a href="{{url_for('main.gallery')}}" class="btn btn-primary btn-sm">Check out the gallery</a>
+            <h3 class="card-title">Want to see some art?</h3>
+            <p class="card-text">I don't own any of the art, all the credit goes to it's respective artist.</p>
+            <div class="d-flex justify-content-between flex_article">
+                <a href="{{url_for('main.gallery')}}" class="btn btn-primary btn-block w-25 block_button">Check out the gallery <i class="fas fa-images"></i></a>
+            </div>
         </div>
     </div>
 </div>

@@ -12,6 +12,7 @@
     --black: rgb(0, 0, 0);
     --white: white;
     --modal: white;
+    --media_border: #dddddd;
     transition: background 0.2s linear;
 }
 
@@ -29,6 +30,7 @@
     --black: rgb(0, 0, 0);
     --white: white;
     --modal: #414141;
+    --media_border: #dddddd;
     transition: background 0.2s linear;
 }
 
@@ -74,7 +76,7 @@ body {
     background: var(--gray) !important;
     padding: 20px 15px 15px 20px;
     border: 1px solid #dddddd;
-    border: 1px solid var(--borgray) !important;
+    border: 1px solid var(--gray) !important;
     border-radius: 10px;
     margin-bottom: 20px;
 }
@@ -109,10 +111,12 @@ body {
 
 .img-cont {
     width: 40px;
+    height: 40px;
     margin-right: 10px;
 }
 
 .article-img {
+    border-radius: 10px;
     width: 100%;
 }
 
@@ -167,6 +171,10 @@ body {
     margin-bottom: 15px;
 }
 
+.round {
+    border-radius: 8px;
+}
+
 .account-heading {
     font-size: 2.5rem;
 }
@@ -180,7 +188,7 @@ body {
 }
 
 .inner:hover img {
-    transform: scale(1.25);
+    transform: scale(1.2);
 }
 
 .borders {
@@ -299,23 +307,36 @@ input.invalid {
     background: #007bff;
 }
 
+@media screen and (max-width: 768px) {
+    .block_button {
+        width: 100% !important;
+        margin-left: 0px !important;
+        margin-bottom: 10px !important;
+        margin-right: 0px !important;
+        margin-top: 2px !important;
+    }
+    .flex_article {
+        flex-wrap: wrap !important;
+    }
+}
+
 @media screen and (max-width: 560px) {
     .small_pic {
         float: none !important;
         width: 100% !important;
         height: 100% !important;
     }
+    .block_button {
+        padding: .25rem .5rem !important;
+        font-size: .875rem !important;
+        line-height: 1.5 !important;
+        border-radius: .2rem !important;
+    }
     .centrado {
         text-align: center !important;
     }
-    .media-body {
-        flex: auto !important;
-    }
     .img-cont {
-        color: var(--font-color) !important;
-        background: var(--bg-color) !important;
         margin-right: 4px;
-        width: 85%;
     }
     .account-img {
         height: 100%;

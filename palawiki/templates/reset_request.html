@@ -2,6 +2,9 @@
 <!-- extended from -->
 {% block body %}
 <div class="content-section">
+    <div class="d-flex justify-content-between flex_article">
+        <a class="btn btn-secondary mt-1 mb-2 btn-block w-25 block_button" href="{{url_for('users.login')}}"><i class="fas fa-sign-in-alt"></i> Login</a>
+    </div>
     <form action="" method="POST">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -27,8 +30,8 @@
                 {% endif %}
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-info") }}
+        <div class="form-group d-flex justify-content-around flex_article">
+            {{ form.submit(class="btn btn-info btn-block w-50 block_button") }}
         </div>
     </form>
 </div>

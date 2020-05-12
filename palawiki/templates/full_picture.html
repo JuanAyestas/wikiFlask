@@ -1,25 +1,30 @@
 {% extends "base.html" %}
 <!-- extended from -->
 {% block body %}
+
+<div class="d-flex justify-content-between mb-3 flex_article">
+    <a class="btn btn-secondary ml-1 mt-2 mb-2 pl-3 pr-3 btn-block w-25 block_button" href="{{url_for('main.gallery')}}"><i class="fas fa-images"></i> Gallery</a>
+</div>
+
 <div class="row row-cols-2">
-    <div class="col-md-12 shadow inner">
+    <div class="col-md-12 shadow">
         <figure class="figure">
             <div>
-                <figcaption class="figure-caption">{{pics.champion_name}}</figcaption>
+                <figcaption class="figure-caption text-center mt-2 mb-2">{{pics.champion_name}}</figcaption>
             </div>
-            <img src="{{pics.img_file}}" class="figure-img img-fluid  w-100" alt="{{pics.champion_name}}">
+            <img src="{{pics.img_file}}" class="figure-img w-100" alt="{{pics.champion_name}}">
+            <!-- if -->
+            {% if current_user.is_authenticated %}
+            <div class="d-flex justify-content-around flex_article">
+                <button type="button" class="btn btn-danger m-1 mb-3 btn-block w-75 block_button" data-toggle="modal" data-target="#deleteModal">Delete Picture <i class="fas fa-trash"></i></button>
+            </div>
+            <!-- start end -->
+            {% endif %}
+            <!-- end if -->
         </figure>
+
     </div>
 </div>
-<hr/>
-<!-- if -->
-{% if current_user.is_authenticated %}
-<div>
-    <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#deleteModal">Delete Picture</button>
-</div>
-<!-- start end -->
-{% endif %}
-<!-- end if -->
 <hr/>
 <!-- start modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -44,4 +49,4 @@
     </div>
 </div>
 <!-- end -->
-{% endblock%}
+{% endblock%}>

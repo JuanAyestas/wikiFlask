@@ -3,52 +3,54 @@
 {% block body %}
 <!-- block start -->
 
-<div>
-    <a style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px; display:inline-block;" class="btn btn-secondary btn-sm" href="{{url_for('main.home')}}">&#8592; Back to home</a>
-    <a style="margin-left: 5px; margin-top: 10px; margin-bottom: 10px;" class=" btn btn-success float-right btn-sm" href="{{url_for('main.gallery')}}">Go to Gallery &#8594;</a>
+<div class="d-flex justify-content-between flex_article">
+    <a class="btn btn-secondary mr-4 mt-2 mb-2 btn-block block_button " href="{{url_for('main.home')}}"><i class="fas fa-home"></i> Home</a>
+    <a class="btn btn-primary m-2 btn-block block_button " href="{{url_for('main.gallery')}}">Gallery <i class="fas fa-images"></i></a>
+    <a class=" btn btn-success ml-4 mt-2 mb-2 btn-block block_button " href="{{url_for('champions.newpost')}}">New Entry <i class="fas fa-plus-square"></i></a>
 </div>
-<div class="text-center">
-    <h1 style="display:inline-block;">Champions List:</h1>
+<div class="text-center mb-4">
+    <h1>Champions List:</h1>
 </div>
-<br>
 <!-- for starts -->
 {% for post in posts.items %}
-<article class="media content-section pl-1 pr-3 pt-3 pb-3">
-    <div class="img-cont">
-        <img class="float-left article-img" src="{{ post.author.image_file }}" alt="post.author.username ">
-    </div>
-    <div class="media-body">
-        <div class="article-metadata ">
-            <a class="mr-2 " href="{{ url_for( 'users.user_posts', username=post.author.username) }} ">{{ post.author.username }}</a>
-            <small class="text-muted ">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+<article class="media content-section pl-2 pr-3 pt-2 pb-3 mb-4">
+    <div class="d-flex justify-content-between flex_article">
+        <div class="img-cont">
+            <img class="article-img" src="{{ post.author.image_file }}" alt="post.author.username">
         </div>
-        <div class="centrado ">
-            <h2><a class="article-title" href="{{ url_for( 'main.full_article', champion_id=post.id) }} ">{{ post.name }}</a></h2>
-        </div>
-        <div>
-            <img class="w-50 float-right img-thumbnail small_pic shadow " src="{{post.portait}} " alt="{{post.name}} ">
-        </div>
-        <div class="article-metadata centrado ">
-            <h5><a class="article-title text-muted " href="{{url_for( 'main.full_article', champion_id=post.id)}} "><em>{{ post.title }}</em></a></h5>
-        </div>
-        <div class="article-metadata ">
-            <h5 class="article-content ">Role:</h5>
-            <ul>
-                <li>
-                    <p class="article-content lead ">{{ post.role }}</p>
-                </li>
-            </ul>
-        </div>
-        <div class="article-metadata ">
-            <h5 class="article-content ">Summary: </h5>
-            <ul>
-                <li>
-                    <p class="article-content lead ">{{ post.summary }}</p>
-                </li>
-            </ul>
-        </div>
-        <div class="article-metadata ">
-            <small class="text-muted ">To check the full article, click the Champion's name</small>
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{{ url_for( 'users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <div class="text-center">
+                <h2><a class="article-title" href="{{ url_for( 'main.full_article', champion_id=post.id) }} ">{{ post.name }}</a></h2>
+            </div>
+            <div class="text-center">
+                <img class="w-75 img-thumbnail small_pic shadow" src="{{post.portait}} " alt="{{post.name}} ">
+            </div>
+            <div class="article-metadata text-center">
+                <h5><a class="article-title text-muted " href="{{url_for( 'main.full_article', champion_id=post.id)}} "><em>{{ post.title }}</em></a></h5>
+            </div>
+            <div class="article-metadata">
+                <h5 class="article-content">Role:</h5>
+                <ul>
+                    <li>
+                        <p class="article-content lead">{{ post.role }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="article-metadata">
+                <h5 class="article-content">Summary: </h5>
+                <ul>
+                    <li>
+                        <p class="article-content lead">{{ post.summary }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="article-metadata">
+                <small class="text-muted">To check the full article, click the Champion's name</small>
+            </div>
         </div>
     </div>
 </article>

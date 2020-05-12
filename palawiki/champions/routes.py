@@ -104,7 +104,7 @@ def upload_picture():
     db.session.add(post)
     db.session.commit()
     return redirect(url_for('main.gallery'))
-  return render_template('upload_picture.html', title='Uploading', form=form, posts=posts, pics=pics)
+  return render_template('upload_picture.html', title='Uploading', form=form, posts=posts, pics=pics, legend="Upload a new Picture")
 
 
 @champions.route("/gallery/<int:picture_id>", methods=['GET', 'POST'])

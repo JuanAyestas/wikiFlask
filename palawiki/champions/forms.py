@@ -46,6 +46,6 @@ class UpdatePortait(FlaskForm):
 class PicturePost(FlaskForm):
   img_file = StringField('Url for the champion picture', validators=[DataRequired()])
   champion_id = StringField('For which champion do you wanna upload it?', validators=[DataRequired()])
-  champion_name = StringField('Select its title to confirm', validators=[DataRequired()])
+  champion_name = StringField('Select their title to confirm:', validators=[DataRequired()])
   submit = SubmitField('Upload')
 

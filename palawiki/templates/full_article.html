@@ -2,17 +2,18 @@
 <!-- extended from -->
 {% block body %}
 <!-- block start -->
-<div>
-    <a class="btn btn-secondary btn-sm m-1" href="{{url_for('main.championslist')}}">&#8592; Back to Champions</a>
+<div class="d-flex justify-content-start flex_article">
+    <a class="btn btn-secondary mb-3 btn-block w-25 block_button" href="{{url_for('main.championslist')}}"><i class="fas fa-list-alt"></i> Champions</a>
 </div>
 
-<div class="text-center">
-    <h1 style="display:inline-block;"></h1>
+<div class="text-center mb-4">
+    <h1>Full Article:</h1>
 </div>
+
 <!-- for starts -->
-<article class="media content-section pl-1 pr-3 pt-3 pb-3">
+<article class="media content-section pl-2 pr-3 pt-2 pb-3">
     <div class="img-cont">
-        <img class="float-left article-img pic_hide" src="{{ post.author.image_file }}" alt="post.author.username">
+        <img class="float-left article-img" src="{{ post.author.image_file }}" alt="post.author.username">
     </div>
     <div class="media-body">
         <div class="article-metadata">
@@ -21,13 +22,11 @@
         </div>
         <!-- start if -->
         {% if post.author == current_user %}
-        <div class="article-metadata">
-            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{url_for('champions.edit', champion_id=post.id)}}">Update</a>
-            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{{url_for('champions.change_portait', champion_id=post.id)}}">Change Portait</a>
-            <button class="btn btn-danger btn-sm mt-1 mb-1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-
+        <div class="d-flex flex_article justify-content-between article-metadata">
+            <button class="btn btn-danger mt-2 mr-3 mb-2 btn-block block_button" type="button" data-toggle="modal" data-target="#deleteModal">Delete <i class="fas fa-trash"></i></button>
+            <a class="btn btn-primary mb-2 mr-2 ml-2 btn-block block_button" href="{{url_for('champions.change_portait', champion_id=post.id)}}">Change Portait <i class="fas fa-camera"></i></a>
+            <a class="btn btn-success mb-2 ml-3 btn-block block_button" href="{{url_for('champions.edit', champion_id=post.id)}}">Update <i class="fas fa-edit"></i></a>
         </div>
-
         <!-- endif -->
         {% endif %}
 

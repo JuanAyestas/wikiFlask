@@ -2,6 +2,9 @@
 <!-- extended from -->
 {% block body %}
 <div class="content-section">
+    <div class="d-flex justify-content-start flex_article mb-3">
+        <a class="btn btn-secondary mt-2 mb-2 btn-block w-25 block_button" href="{{url_for('main.home')}}"><i class="fas fa-home"></i> Home</a>
+    </div>
     <div class="media">
         <img class="account-img inner" src="{{ current_user.image_file }}">
         <div class="media-body borders">
@@ -75,9 +78,10 @@
                 {% endif %}
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-info m-1 boton") }}
-            <button type="button" class="btn btn-danger m-1 float-right boton" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
+        <div class="form-group d-flex justify-content-between flex_article">
+            <button type="button" class="btn btn-danger m-1 boton btn-block mr-4 block_button" data-toggle="modal" data-target="#deleteModal">Delete Account <i class="fas fa-trash"></i></button>
+            <!-- submit form -->
+            {{ form.submit(class="btn btn-info m-1 boton btn-block ml-4 block_button")}}
         </div>
     </form>
     <!-- start modal -->

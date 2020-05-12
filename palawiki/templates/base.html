@@ -19,7 +19,7 @@
 
 <body>
     <header class="site-header">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="/">Champions Wiki</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +27,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarsExample03">
                     <div class="navbar-nav mr-auto">
-                        <a class="nav-item nav-link" href="{{url_for('main.championslist')}}">Champions</a>
-                        <a class="nav-item nav-link mr-2" href="{{url_for('main.gallery')}}">Gallery</a>
+                        <a class="nav-item nav-link" href="{{url_for('main.championslist')}}">Champions <i class="fas fa-list-alt"></i></a>
+                        <a class="nav-item nav-link mr-2" href="{{url_for('main.gallery')}}">Gallery <i class="fas fa-images"></i></a>
                         <div class="label_div" id="theme-change">
                             <input type="checkbox" class="checkbox" id="checkbox-theme">
                             <label for="checkbox-theme" class="label_check theme-change">
@@ -40,14 +40,14 @@
                     </div>
                     <div class="navbar-nav">
                         {% if current_user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{{url_for('champions.upload_picture')}}">New picture</a>
-                        <a class="nav-item nav-link" href="{{url_for('champions.newpost')}}">New entry</a>
-                        <a class="nav-item nav-link" href="{{url_for('users.account')}}">Account</a>
-                        <a class="nav-item nav-link" href="{{url_for('users.logout')}}">Logout</a>
+                        <a class="nav-item nav-link" href="{{url_for('champions.newpost')}}">New entry <i class="fas fa-plus-square"></i></a>
+                        <a class="nav-item nav-link" href="{{url_for('champions.upload_picture')}}">New picture <i class="fas fa-camera"></i></a>
+                        <a class="nav-item nav-link" href="{{url_for('users.account')}}">Account <i class="fas fa-user-circle"></i></a>
+                        <a class="nav-item nav-link" href="{{url_for('users.logout')}}">Logout <i class="fas fa-sign-out-alt"></i></a>
                         <!-- start else -->
                         {% else %}
-                        <a class="nav-item nav-link" href="{{url_for('users.login')}}">Login</a>
-                        <a class="nav-item nav-link" href="{{url_for('users.register')}}">Register</a>
+                        <a class="nav-item nav-link" href="{{url_for('users.login')}}">Login <i class="fas fa-sign-in-alt"></i></a>
+                        <a class="nav-item nav-link" href="{{url_for('users.register')}}">Register <i class="fas fa-user-plus"></i></a>
                         <!-- start end -->
                         {% endif %}
                         <!-- end if -->

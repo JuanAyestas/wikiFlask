@@ -3,6 +3,9 @@
 {% block body %}
 
 <div class="content-section">
+    <div class="d-flex justify-content-between flex_article">
+        <a class=" btn btn-secondary ml-1 mt-2 mb-2 btn-block w-25 block_button" href="{{url_for('main.full_article', champion_id=post.id)}}"><i class="fas fa-list-alt"></i> Full Article</a>
+    </div>
     <form id="regForm" action="" method="POST">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
@@ -267,15 +270,11 @@
             </div>
 
             <div style="overflow:auto;">
-                <div style="float:left;">
-                    <button type="button" class="btn btn-sm btn-secondary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                </div>
-                <div style="float:right;">
-                    <button type="button" class="btn btn-sm btn-primary" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                </div>
-                <div class="float-right">
-                    <!-- form -->
-                    {{ form.submit(class="btn btn-success btn-sm", id="submitBtn") }}
+                <div class="d-flex justify-content-around flex_article">
+                    <button type="button" class="btn btn-secondary btn-block w-50 mr-4 mt-2 block_button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" class="btn btn-primary btn-block w-50 ml-4 block_button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <!-- input -->
+                    {{ form.submit(class="btn btn-success btn-block w-50 ml-4 block_button", id="submitBtn") }}
                 </div>
             </div>
             <!-- Circles which indicates the steps of the form: -->

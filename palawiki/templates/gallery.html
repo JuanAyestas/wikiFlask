@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 <!-- extended from -->
 {% block body %}
-
-<div>
-    <a style="margin-right: 5px; margin-top: 10px; margin-bottom: 10px;" class="btn btn-secondary btn-sm" href="{{url_for('main.home')}}">&#8592; Back to home</a>
-    <a style="margin-left: 5px; margin-top: 10px; margin-bottom: 10px;" class=" btn btn-success float-right btn-sm" href="{{url_for('main.championslist')}}">Go to champions &#8594;</a>
+<div class="d-flex justify-content-between flex_article">
+    <a class="btn btn-secondary mr-3 mt-2 mb-2 btn-block block_button" href="{{url_for('main.championslist')}}"><i class="fas fa-list-alt"></i> Champions</a>
+    <!-- if  -->
+    {% if current_user.is_authenticated %}
+    <a class="btn btn-success ml-3 mt-2 mb-2 btn-block block_button" href="{{url_for('champions.upload_picture')}}">New Picture <i class="fas fa-camera"></i></a>
+    <!-- endif -->
+    {% endif %}
 </div>
-<div class="text-center">
-    <h1 style="display:inline-block;">Champions Gallery:</h1>
+<div class="text-center d-inline">
+    <h1>Champions Gallery:</h1>
 </div>
 <div class="alert alert-warning" role="alert">
     I don't own any of the pictures shown bellow, all credits go to their artists.
@@ -16,18 +19,15 @@
 <div class="row row-cols-2">
     {% for pic in pics %}
     <div class="col-md-6 shadow inner">
-        <figure class="figure">
-            <div class="text-center">
-                <br/>
+        <figure class="figure round">
+            <div class="text-center mt-2 mb-4">
                 <figcaption class="figure-caption">{{pic.champion_name}}</figcaption>
-                <hr/>
             </div>
-            <img src="{{pic.img_file}}" class="figure-img img-fluid rounded w-100" alt="{{pic.champion_name}}">
+            <img src="{{pic.img_file}}" class="figure-img rounded w-100" alt="{{pic.champion_name}}">
             <!-- if  -->
             {% if current_user.is_authenticated %}
-            <hr/>
-            <div>
-                <a class="btn btn-secondary btn-sm m-1" href="{{url_for('champions.full_picture', picture_id=pic.id)}}">Open in new tab</a>
+            <div class="d-flex justify-content-around mt-3 flex_article">
+                <a class="btn btn-secondary m-1 mb-3 btn-block w-75 block_button" href="{{url_for('champions.full_picture', picture_id=pic.id)}}">Open in new tab</a>
             </div>
             <!-- endif -->
             {% endif %}
@@ -35,6 +35,5 @@
     </div>
     {% endfor %}
 </div>
-
 <!-- end -->
 {% endblock%}

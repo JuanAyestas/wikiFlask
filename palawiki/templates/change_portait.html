@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 <!-- extended from -->
 {% block body %}
+<div class="d-flex justify-content-between flex_article">
+    <a class=" btn btn-secondary ml-1 mt-2 mb-2 btn-block w-25 block_button" href="{{url_for('main.full_article', champion_id=post.id)}}"><i class="fas fa-list-alt"></i> Full Article</a>
+</div>
 <h2 class="text-center">Current Portait</h2>
-<div>
+<div class="mb-3">
     <img class="w-100 h-100 img-thumbnail shadow" src="{{post.portait}}" alt="{{post.name}}">
 </div>
 <div class="content-section">
@@ -31,8 +34,8 @@
                 {% endif %}
             </div>
         </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-info") }}
+        <div class="form-group d-flex justify-content-around flex_article">
+            {{ form.submit(class="btn btn-info btn-block w-50 block_button") }}
         </div>
     </form>
 </div>
