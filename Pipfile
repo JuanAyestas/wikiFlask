@@ -13,10 +13,8 @@ email-validator = "*"
 flask-sqlalchemy = "*"
 flask-bcrypt = "*"
 flask-login = "*"
-pillow = "*"
 flask-mail = "*"
 gunicorn = "*"
-bootstrap4-toggle = "*"
 
 [requires]
 python_version = "3.8"

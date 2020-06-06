@@ -13,7 +13,7 @@
     --white: white;
     --modal: white;
     --media_border: #dddddd;
-    --border_2: transition: background 0.2s linear;
+    transition: background 0.4s linear;
 }
 
 [data-theme="dark"] {
@@ -31,7 +31,7 @@
     --white: white;
     --modal: #414141;
     --media_border: #dddddd;
-    transition: background 0.2s linear;
+    transition: background 0.4s linear;
 }
 
 span {
@@ -110,8 +110,8 @@ body {
 }
 
 .img-cont {
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
     margin-right: 10px;
 }
 
