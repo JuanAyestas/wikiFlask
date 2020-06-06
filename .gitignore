@@ -1,5 +1,8 @@
+.vscode
+settings.json
 old
 __pycache__
+tempCodeRunnerFile.py
 tempCodeRunnerFile.py
 .DS_Store
 __init__.pyc
